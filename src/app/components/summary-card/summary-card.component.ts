@@ -10,6 +10,7 @@ import { Component, input } from '@angular/core';
 })
 export class SummaryCardComponent {
   header = input.required<string>();
+  subHeader = input.required<string>();
   value = input.required<number>();
   secondary = input(false);
 }

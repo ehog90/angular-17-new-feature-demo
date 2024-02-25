@@ -12,12 +12,26 @@ import { InvestmentChartComponent } from './components/investment-chart/investme
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  inflationRate = model(4);
-  startingMoney = model(1_800_000);
-  savingsMonthly = model(200_000);
-  grow = model(10);
-  years = model(5);
+  inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
+  startingMoney = model(
+    Number(localStorage.getItem('startingMoney') ?? 1_000_000)
+  );
+  savingsMonthly = model(
+    Number(localStorage.getItem('savingsMonthly') ?? 100_000)
+  );
+  grow = model(Number(localStorage.getItem('grow') ?? 10));
+  years = model(Number(localStorage.getItem('years') ?? 10));
   startingYear = signal(new Date().getFullYear());
+
+  constructor() {
+    effect(() => {
+      localStorage.setItem('inflation', this.inflationRate().toString());
+      localStorage.setItem('startingMoney', this.startingMoney().toString());
+      localStorage.setItem('savingsMonthly', this.savingsMonthly().toString());
+      localStorage.setItem('grow', this.grow().toString());
+      localStorage.setItem('years', this.years().toString());
+    });
+  }
 
   data = signal<InvestmentYear[] | null>(null);
 

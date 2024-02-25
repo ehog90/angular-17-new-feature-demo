@@ -26,7 +26,7 @@ export class InvestmentGridComponent {
   years = model.required<number>();
   startingYear = model.required<number>();
 
-  roundDigits = 4;
+  roundDigits = 6;
 
   constructor() {
     effect(

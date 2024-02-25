@@ -1,0 +1,5 @@
+<div class="bg-purple-900 sm:p-2 lg:p-4 sm:rounded-lg rounded-xl shadow-lg" [class.text-purple-400]="secondary()"
+    [class.text-purple-100]="!secondary()">
+    <div class="text-sm font-bold">{{header()}}</div>
+    <div class="text-4xl font-bold">{{value() | number: '1.0-0'}}</div>
+</div>

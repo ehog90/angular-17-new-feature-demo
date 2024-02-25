@@ -9,4 +9,6 @@ export type InvestmentYear = {
   savingsMonthly: number;
   totalInvested: number;
   totalInvestedValueToday: number;
+  totalEarnings: number;
+  totalEarningsValueToday: number;
 };

@@ -1,0 +1,57 @@
+<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
+    <div class="flex gap-2 justify-center m-4">
+        <button class="bg-purple-600 rounded-md text-purple-100 p-2 shadow-md hover:bg-purple-500"
+            (click)="changeYears(1)">Increase
+            years</button>
+        <button class="bg-purple-600 rounded-md text-purple-100 p-2 shadow-md hover:bg-purple-500"
+            (click)="changeYears(-1)">Increase
+            years</button>
+    </div>
+    <div class="grid grid-cols-10 gap-2 text-sm">
+        <div class="font-extrabold">Year</div>
+        <div class="font-extrabold">Starting Money</div>
+        <div class="font-extrabold">Total inflation, %</div>
+        <div class="font-extrabold">Total growth, %</div>
+        <div class="font-extrabold">Monthly (yearly) savings</div>
+        <div class="font-extrabold">Intra-year Investment and growth</div>
+        <div class="font-extrabold">Total Invested</div>
+        <div class="font-extrabold">Total Invested (Value today)</div>
+        <div class="font-extrabold">Total (Year-end)</div>
+        <div class="font-extrabold">Total (Value today)</div>
+
+        @for (row of data(); track $index) {
+        <div class="flex flex-col text-lg">
+            {{row.year}}
+        </div>
+        <div class="flex flex-col">
+            {{row.startingMoney | number: '1.0-0'}}
+        </div>
+        <div class="flex flex-col">
+            {{(row.totalInflation - 1) | percent: '1.2'}}
+        </div>
+        <div class="flex flex-col">
+            {{(row.totalGrowth - 1) | percent: '1.2'}}
+        </div>
+        <div class="flex flex-col">
+            {{row.savingsMonthly | number: '1.0-0'}} ({{row.savingsMonthly * 12 | number: '1.0-0'}})
+        </div>
+        <div class="flex flex-col">
+            {{row.intraYearGrowth | number: '1.0-0'}}
+        </div>
+        <div class="flex flex-col">
+            {{row.totalInvested | number: '1.0-0'}}
+        </div>
+        <div class="flex flex-col text-purple-400">
+            {{row.totalInvestedValueToday | number: '1.0-0'}}
+        </div>
+        <div class="flex flex-col font-bold">
+            {{row.yearEndMoney | number: '1.0-0'}}
+        </div>
+        <div class="flex flex-col text-purple-400">
+            {{row.yearEndMoneyValueToday | number: '1.0-0'}}
+        </div>
+
+        }
+    </div>
+
+</div>

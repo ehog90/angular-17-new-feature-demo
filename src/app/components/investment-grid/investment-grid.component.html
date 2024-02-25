@@ -1,9 +1,20 @@
+@if (lastRow !== null) {
+<div class="m-3">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+        <app-summary-card [value]="lastRow.totalInvested" header="Total Invested"></app-summary-card>
+        <app-summary-card [value]="lastRow.yearEndMoney" header="Total Value"></app-summary-card>
+        <app-summary-card [value]="lastRow.totalEarnings" header="Total Earnings"></app-summary-card>
+        <app-summary-card [value]="lastRow.yearEndMoneyValueToday" header="Total Value (Today)"
+            [secondary]="true"></app-summary-card>
+    </div>
+</div>
+}
 <div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
     <div class="flex gap-2 justify-center m-4">
         <button class="bg-purple-500 rounded-md text-purple-100 p-2 shadow-md hover:bg-purple-400"
             (click)="changeYears(1)">Increase
             years</button>
-        <button class="bg-purple-500 rounded-md text-purple-100 p-2 shadow-md hover:bg-purple-400"
+        <button class="bg-purple-500 rounded-md text-purple-100 p-2 shadow-md hover:bg-purple-50"
             (click)="changeYears(-1)">Decrease
             years</button>
     </div>
@@ -61,16 +72,3 @@
         }
     </div>
 </div>
-@if (lastRow !== null) {
-<div class="m-3">
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-2">
-        <app-summary-card [value]="lastRow.totalInvested" header="Total Invested"></app-summary-card>
-        <app-summary-card [value]="lastRow.yearEndMoney" header="Total Value"></app-summary-card>
-        <app-summary-card [value]="lastRow.totalEarnings" header="Total Earnings"></app-summary-card>
-        <app-summary-card [value]="lastRow.yearEndMoneyValueToday" header="Total Value (Today)"
-            [secondary]="true"></app-summary-card>
-        <app-summary-card [value]="lastRow.totalEarningsValueToday" header="Total Earnings (Today)"
-            [secondary]="true"></app-summary-card>
-    </div>
-</div>
-}

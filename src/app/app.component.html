@@ -1,37 +1,79 @@
-<div class="text-center text-3xl font-extrabold rounded-lg shadow-lg  p-6 m-3 bg-lime-500 text-lime-800">
-  Wealth Calculator
+<div
+  class="text-center text-3xl font-extrabold rounded-lg shadow-lg p-6 m-3 bg-lime-500 text-lime-800"
+>
+  <div class="text-3xl">Wealth Calculator</div>
+  <div class="text-sm">For demonstrational purposes only. Do not plan your investment with this application!</div>
 </div>
 <div class="bg-slate-500 text-slate-50 rounded-lg shadow-lg m-3 p-6">
-  <div class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+  <div
+    class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4"
+  >
     <div class="flex flex-col">
-      <label for="starting-money" class="mb-2 text-sm font-light">Initially invested money</label>
-      <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="startingMoney">
+      <label for="starting-money" class="mb-2 text-sm font-light"
+        >Initially invested money</label
+      >
+      <input
+        id="starting-money"
+        type="number"
+        class="rounded-md p-2 bg-slate-300 text-slate-800"
+        [(ngModel)]="startingMoney"
+      />
     </div>
     <div class="flex flex-col">
-      <label for="starting-money" class="mb-2 text-sm font-light">Monthly savings, average</label>
-      <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="savingsMonthly">
+      <label for="starting-money" class="mb-2 text-sm font-light"
+        >Monthly savings, average</label
+      >
+      <input
+        id="starting-money"
+        type="number"
+        class="rounded-md p-2 bg-slate-300 text-slate-800"
+        [(ngModel)]="savingsMonthly"
+      />
     </div>
 
     <div class="flex flex-col">
-      <label for="inflation" class="mb-2 text-sm font-light">Inflation rate, average (%)</label>
-      <input id="inflation" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="inflationRate">
+      <label for="inflation" class="mb-2 text-sm font-light"
+        >Inflation rate, average (%)</label
+      >
+      <input
+        id="inflation"
+        type="number"
+        class="rounded-md p-2 bg-slate-300 text-slate-800"
+        [(ngModel)]="inflationRate"
+      />
     </div>
     <div class="flex flex-col">
-      <label for="grow" class="mb-2 text-sm font-light">Expected yearly average grow (%)</label>
-      <input id="grow" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="grow">
+      <label for="grow" class="mb-2 text-sm font-light"
+        >Expected yearly average grow (%)</label
+      >
+      <input
+        id="grow"
+        type="number"
+        class="rounded-md p-2 bg-slate-300 text-slate-800"
+        [(ngModel)]="grow"
+      />
     </div>
     <div class="flex flex-col">
       <label for="grow" class="mb-2 text-sm font-light">Years</label>
-      <input id="grow" type="number" min="5" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="years">
+      <input
+        id="grow"
+        type="number"
+        min="5"
+        class="rounded-md p-2 bg-slate-300 text-slate-800"
+        [(ngModel)]="years"
+      />
     </div>
   </div>
 </div>
-<app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
-  [inflationRate]="inflationRate()" [startingMoney]="startingMoney()" [startingYear]="startingYear()"
-  (dataChanged)="onDataChanged($event)"></app-investment-grid>
+<app-investment-grid
+  [savingsMonthly]="savingsMonthly()"
+  [grow]="grow()"
+  [(years)]="years"
+  [inflationRate]="inflationRate()"
+  [startingMoney]="startingMoney()"
+  [startingYear]="startingYear()"
+  (dataChanged)="onDataChanged($event)"
+></app-investment-grid>
 @if (data() !== null) {
 <app-investment-chart [data]="data()"></app-investment-chart>
 } @else {

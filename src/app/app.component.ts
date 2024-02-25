@@ -26,11 +26,19 @@ export class AppComponent {
   constructor() {
     effect(() => {
       localStorage.setItem('inflation', this.inflationRate().toString());
-      localStorage.setItem('startingMoney', this.startingMoney().toString());
-      localStorage.setItem('savingsMonthly', this.savingsMonthly().toString());
-      localStorage.setItem('grow', this.grow().toString());
-      localStorage.setItem('years', this.years().toString());
     });
+    effect(() => {
+      localStorage.setItem('startingMoney', this.startingMoney().toString());
+    });
+    effect(() => {
+      localStorage.setItem('savingsMonthly', this.savingsMonthly().toString());
+    });
+    effect(() => {
+      localStorage.setItem('grow', this.grow().toString());
+    });
+    effect(() => {
+      localStorage.setItem('years', this.years().toString());
+    });   
   }
 
   data = signal<InvestmentYear[] | null>(null);

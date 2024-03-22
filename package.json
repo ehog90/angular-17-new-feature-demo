@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^17.3.1",
     "@angular/platform-browser-dynamic": "^17.3.1",
     "@angular/router": "^17.3.1",
+    "@fontsource/manrope": "^5.0.19",
     "lodash": "^4.17.21",
     "ng-apexcharts": "^1.9.0",
     "rxjs": "~7.8.0",

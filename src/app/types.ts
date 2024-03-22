@@ -12,3 +12,13 @@ export type InvestmentYear = {
   totalEarnings: number;
   totalEarningsValueToday: number;
 };
+
+export type Trading212CashResponse = {
+  free: number;
+  total: number;
+  ppl: number;
+  result: number;
+  invested: number;
+  pieCash: number;
+  blocked: unknown;
+};

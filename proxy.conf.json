@@ -1,0 +1,7 @@
+{
+  "/t212": {
+    "target": "https://live.trading212.com/",
+    "secure": true,
+    "logLevel": "info"
+  }
+}

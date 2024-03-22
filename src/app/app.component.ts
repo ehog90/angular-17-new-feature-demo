@@ -1,9 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, model, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  model,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InvestmentYear } from './types';
 import { InvestmentGridComponent } from './components/investment-grid/investment-grid.component';
 import { InvestmentChartComponent } from './components/investment-chart/investment-chart.component';
+import { Trading212Service } from './services/trading212.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,6 +20,8 @@ import { InvestmentChartComponent } from './components/investment-chart/investme
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  readonly trading212Service = inject(Trading212Service);
+
   inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
   startingMoney = model(
     Number(localStorage.getItem('startingMoney') ?? 1_000_000)
@@ -38,12 +48,18 @@ export class AppComponent {
     });
     effect(() => {
       localStorage.setItem('years', this.years().toString());
-    });   
+    });
   }
 
   data = signal<InvestmentYear[] | null>(null);
 
   onDataChanged(data: InvestmentYear[]) {
     this.data.set(data);
+  }
+
+  getFromtrading212() {
+    this.trading212Service.getAccountCash().subscribe((data) => {
+      this.startingMoney.set(data.result);
+    });
   }
 }

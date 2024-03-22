@@ -45,7 +45,7 @@ export class InvestmentGridComponent {
   monthlyGrowPercent = computed(() => this.grow() / 12 / 100);
 
   changeYears(years: number) {
-    this.years.update((y) => Math.max(y + years, 0));
+    this.years.update((y) => Math.max(y + years, 1));
   }
 
   data = computed(() => {

@@ -36,7 +36,7 @@ export class InvestmentChartComponent {
   @ViewChild('chart') chart!: ChartComponent;
 
   data$ = toObservable(this.data);
-  dataDebounced = toSignal(this.data$.pipe(debounceTime(1000)));
+  dataDebounced = toSignal(this.data$.pipe(debounceTime(500)));
 
   categories = computed(() => {
     const data = this.dataDebounced();
@@ -85,8 +85,7 @@ export class InvestmentChartComponent {
       text: 'Your investment',
       align: 'left',
     },
-    grid: {
-    },
+    grid: {},
     xaxis: {},
   };
 }

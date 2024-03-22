@@ -11,6 +11,8 @@ import {
 import { InvestmentYear } from '../../types';
 import round from 'lodash/round';
 import { SummaryCardComponent } from '../summary-card/summary-card.component';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-investment-grid',
@@ -26,6 +28,9 @@ export class InvestmentGridComponent {
   grow = model.required<number>();
   years = model.required<number>();
   startingYear = model.required<number>();
+
+  years$ = toObservable(this.years);
+  yearsDebounced = toSignal(this.years$.pipe(debounceTime(500)));
 
   roundDigits = 6;
 
@@ -49,7 +54,7 @@ export class InvestmentGridComponent {
   }
 
   data = computed(() => {
-    const years = [...Array(this.years())].map(
+    const years = [...Array(this.yearsDebounced())].map(
       (value, index) => this.startingYear() + index
     );
 

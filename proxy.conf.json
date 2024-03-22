@@ -1,6 +1,6 @@
 {
   "/t212": {
-    "target": "http://localhost:420",
-    "logLevel": "info"
+    "target": "https://live.trading212.com/",
+    "secure": true
   }
 }

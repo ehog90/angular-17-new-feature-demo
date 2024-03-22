@@ -1,9 +1,0 @@
-version: '3.9'
-services:
-  leafr-ui:
-    container_name: angular-signals-t212-proxy
-    build:
-      context: .
-    restart: unless-stopped
-    ports:
-      - 420:420

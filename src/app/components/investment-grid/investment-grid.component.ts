@@ -7,6 +7,7 @@ import {
   effect,
   model,
   output,
+  signal,
 } from '@angular/core';
 import { InvestmentYear } from '../../types';
 import round from 'lodash/round';
@@ -31,10 +32,17 @@ export class InvestmentGridComponent {
 
   years$ = toObservable(this.years);
   yearsDebounced = toSignal(this.years$.pipe(debounceTime(500)));
+  yearsInternal = signal(1);
 
   roundDigits = 6;
 
   constructor() {
+    effect(
+      () => {
+        this.yearsInternal.set(this.yearsDebounced() ?? 1);
+      },
+      { allowSignalWrites: true }
+    );
     effect(
       () => {
         this.dataChanged.emit(this.data());
@@ -50,11 +58,11 @@ export class InvestmentGridComponent {
   monthlyGrowPercent = computed(() => this.grow() / 12 / 100);
 
   changeYears(years: number) {
-    this.years.update((y) => Math.max(y + years, 1));
+    this.yearsInternal.update((y) => Math.max(y + years, 1));
   }
 
   data = computed(() => {
-    const years = [...Array(this.yearsDebounced())].map(
+    const years = [...Array(this.yearsInternal())].map(
       (value, index) => this.startingYear() + index
     );
 

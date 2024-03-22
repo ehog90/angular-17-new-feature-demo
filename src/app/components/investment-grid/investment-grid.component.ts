@@ -6,6 +6,7 @@ import {
   computed,
   effect,
   model,
+  output,
 } from '@angular/core';
 import { InvestmentYear } from '../../types';
 import round from 'lodash/round';
@@ -37,8 +38,7 @@ export class InvestmentGridComponent {
     );
   }
 
-  @Output()
-  dataChanged = new EventEmitter<InvestmentYear[]>();
+  dataChanged = output<InvestmentYear[]>();
 
   inflationPercent = computed(() => this.inflationRate() / 100 + 1);
   growPercent = computed(() => 1 + this.grow() / 100);

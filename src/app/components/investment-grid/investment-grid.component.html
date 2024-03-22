@@ -25,43 +25,67 @@
             years</button>
     </div>
     <div class="grid grid-cols-12 gap-2 text-xs">
-        <div class="row"></div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">
+            Year
+        </div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Starting Money
+        </div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total
+            inflation, %</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Accumulated
+            growth rate, %</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Monthly
+            (yearly) savings</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Intra-year
+            Investment and growth</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Invested
+        </div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Invested
+            (Value today)</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total
+            (Year-end)</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total (Value
+            today)</div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Earnings
+        </div>
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Earnings
+            (value today)</div>
 
         @for (row of data(); track $index) {
-        <div class="flex flex-col text-sm">
+        <div class="flex flex-col p-1 md:p-2 text-sm">
             {{row.year}}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{row.startingMoney | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{(row.totalInflation - 1) | percent: '1.2'}}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{(row.totalGrowth - 1) | percent: '1.2'}}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{row.savingsMonthly | number: '1.0-0'}} ({{row.savingsMonthly * 12 | number: '1.0-0'}})
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{row.intraYearGrowth | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-1 md:p-2">
             {{row.totalInvested | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col text-purple-400">
+        <div class="flex flex-col p-1 md:p-2 text-purple-400">
             {{row.totalInvestedValueToday | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col font-bold">
+        <div class="flex flex-col p-1 md:p-2 font-bold">
             {{row.yearEndMoney | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col text-purple-400">
+        <div class="flex flex-col p-1 md:p-2 text-purple-400">
             {{row.yearEndMoneyValueToday | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col font-bold">
+        <div class="flex flex-col p-1 md:p-2 font-bold">
             {{row.totalEarnings | number: '1.0-0'}}
         </div>
-        <div class="flex flex-col text-purple-400">
+        <div class="flex flex-col p-1 md:p-2 text-purple-400">
             {{row.totalEarningsValueToday | number: '1.0-0'}}
         </div>
         } @empty {

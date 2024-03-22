@@ -34,6 +34,16 @@ export class AppComponent {
   startingYear = signal(new Date().getFullYear());
 
   constructor() {
+    effect(
+      () => {
+        const years = this.years();
+        if (years < 1) {
+          this.years.set(1);
+        }
+      },
+      { allowSignalWrites: true }
+    );
+
     effect(() => {
       localStorage.setItem('inflation', this.inflationRate().toString());
     });

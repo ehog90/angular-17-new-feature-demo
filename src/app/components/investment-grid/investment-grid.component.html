@@ -25,18 +25,7 @@
             years</button>
     </div>
     <div class="grid grid-cols-12 gap-2 text-xs">
-        <div class="font-extrabold">Year</div>
-        <div class="font-extrabold">Starting Money</div>
-        <div class="font-extrabold">Total inflation, %</div>
-        <div class="font-extrabold">Accumulated growth rate, %</div>
-        <div class="font-extrabold">Monthly (yearly) savings</div>
-        <div class="font-extrabold">Intra-year Investment and growth</div>
-        <div class="font-extrabold">Total Invested</div>
-        <div class="font-extrabold">Total Invested (Value today)</div>
-        <div class="font-extrabold">Total (Year-end)</div>
-        <div class="font-extrabold">Total (Value today)</div>
-        <div class="font-extrabold">Total Earnings</div>
-        <div class="font-extrabold">Total Earnings (value today)</div>
+        <div class="row"></div>
 
         @for (row of data(); track $index) {
         <div class="flex flex-col text-sm">
@@ -75,6 +64,8 @@
         <div class="flex flex-col text-purple-400">
             {{row.totalEarningsValueToday | number: '1.0-0'}}
         </div>
+        } @empty {
+        No rows.
         }
     </div>
 </div>

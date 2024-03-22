@@ -24,7 +24,7 @@
 
 </div>
 <div class="bg-slate-500 text-slate-50 rounded-lg shadow-lg m-3 p-6">
-  <div class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+  <div class="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
     <div class="flex flex-col gap-2 lg:gap-3">
       <label for="starting-money" class="text-sm font-light">Initially invested money</label>
       <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
@@ -48,9 +48,10 @@
       <label for="grow" class="text-sm font-light">Expected yearly average grow (%)</label>
       <input id="grow" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="grow" />
     </div>
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="grow" class="text-sm font-light">Years</label>
-      <input id="grow" type="number" min="5" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="years" />
+    <div class="flex flex-col gap-2 lg:gap-3 col-span-4">
+      <label for="years" class="text-sm font-light">Years: <span class="font-bold">{{years()}}</span></label>
+      <input id="years" type="range" [(ngModel)]="years" min="1" max="40"
+        class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-800">
     </div>
   </div>
 </div>

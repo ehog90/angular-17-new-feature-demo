@@ -29,9 +29,6 @@
       <label for="starting-money" class="text-sm font-light">Initially invested money</label>
       <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
         [(ngModel)]="startingMoney" />
-      <button (click)="getFromtrading212()"
-        class="bg-slate-700 rounded-md text-slate-300 p-2 shadow-md hover:bg-slate-600">Get from
-        Trading^212</button>
     </div>
     <div class="flex flex-col gap-2 lg:gap-3">
       <label for="starting-money" class="text-sm font-light">Monthly savings, average</label>
@@ -54,6 +51,18 @@
         class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-800">
     </div>
   </div>
+</div>
+<div class="bg-sky-300 text-sky-900 rounded-lg shadow-lg m-3 p-6">
+  <div class="flex flex-col gap-2 lg:gap-3">
+    <div class="font-black">
+      Data from you Trading^212 Account
+    </div>
+    <div>
+      <button (click)="getFromtrading212()" class="bg-sky-700 rounded-md text-sky-300 p-2 shadow-md hover:bg-sky-600">
+        Fetch Invested</button>
+    </div>
+  </div>
+
 </div>
 <app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
   [inflationRate]="inflationRate()" [startingMoney]="startingMoney()" [startingYear]="startingYear()"

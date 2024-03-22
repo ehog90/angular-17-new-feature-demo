@@ -5,11 +5,11 @@
             subHeader="Nominal value"></app-summary-card>
         <app-summary-card [value]="lastRow.yearEndMoney" header="Total Value"
             subHeader="Nominal value"></app-summary-card>
-        <app-summary-card [value]="lastRow.totalEarnings" header="Total Earnings"
+        <app-summary-card [value]="lastRow.totalEarnings" header="Total Return"
             subHeader="Nominal Value"></app-summary-card>
         <app-summary-card [value]="lastRow.yearEndMoneyValueToday" header="Total Value"
             subHeader="Inflation Adjusted - Today's Value" [secondary]="true"></app-summary-card>
-        <app-summary-card [value]="lastRow.totalEarningsValueToday" header="Total Earnings"
+        <app-summary-card [value]="lastRow.totalEarningsValueToday" header="Total Return"
             subHeader="Inflation Adjusted - Today's Value" [secondary]="true"></app-summary-card>
     </div>
 </div>
@@ -46,9 +46,9 @@
             (Year-end)</div>
         <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total (Value
             today)</div>
-        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Earnings
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Return
         </div>
-        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Earnings
+        <div class="font-extrabold p-1 md:p-2 rounded-md bg-purple-700 flex items-center justify-center">Total Return
             (value today)</div>
 
         @for (row of data(); track $index) {

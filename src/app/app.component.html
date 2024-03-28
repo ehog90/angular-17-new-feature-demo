@@ -68,7 +68,10 @@
   [inflationRate]="inflationRate()" [startingMoney]="startingMoney()" [startingYear]="startingYear()"
   (dataChanged)="onDataChanged($event)"></app-investment-grid>
 @if (data() !== null) {
-<app-investment-chart [data]="data()"></app-investment-chart>
+  @defer{
+    <app-investment-chart [data]="data()"></app-investment-chart>
+  }
+  <!-- <app-investment-chart [data]="data()"></app-investment-chart> -->
 } @else {
 <div class="bg-red-500 text-red-50 rounded-lg shadow-lg m-3 p-6">
   There is nothing to draw.

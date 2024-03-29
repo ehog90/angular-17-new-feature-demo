@@ -65,6 +65,10 @@ export class AppComponent {
     this.data.set(data);
   }
 
+  onYearsChanged(years: number) {
+    this.years.set(years);
+  }
+
   getFromtrading212() {
     this.trading212Service.getAccountCash().subscribe((data) => {
       this.initialCapital.set(data.result);

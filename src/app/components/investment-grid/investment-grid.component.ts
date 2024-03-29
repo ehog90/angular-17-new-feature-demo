@@ -31,6 +31,7 @@ export class InvestmentGridComponent {
   years$ = toObservable(this.years);
   yearsDebounced = toSignal(this.years$.pipe(debounceTime(500)));
   yearsInternal = signal(1);
+  yearsChanged = output<number>();
 
   roundDigits = 6;
 
@@ -57,6 +58,7 @@ export class InvestmentGridComponent {
 
   changeYears(years: number) {
     this.yearsInternal.update((y) => Math.max(y + years, 1));
+    this.yearsChanged.emit(this.yearsInternal());
   }
 
   data = computed(() => {

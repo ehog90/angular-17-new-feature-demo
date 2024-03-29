@@ -51,7 +51,7 @@
 @defer (on timer(3s); prefetch on idle){
 <app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
   [inflationRate]="inflationRate()" [initialCapital]="initialCapital()" [startingYear]="startingYear()"
-  (dataChanged)="onDataChanged($event)"></app-investment-grid>
+  (dataChanged)="onDataChanged($event)" (yearsChanged)="onYearsChanged($event)"></app-investment-grid>
 } @error {
 <div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
   Failed to laod the lazy loaded module

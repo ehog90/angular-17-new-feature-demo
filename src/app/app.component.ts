@@ -1,12 +1,4 @@
-import { CommonModule } from '@angular/common';
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  model,
-  signal,
-} from '@angular/core';
+import { Component, effect, inject, model, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InvestmentYear } from './types';
 import { InvestmentGridComponent } from './components/investment-grid/investment-grid.component';

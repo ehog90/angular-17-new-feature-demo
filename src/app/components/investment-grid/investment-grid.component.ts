@@ -11,7 +11,7 @@ import { InvestmentYear } from '../../types';
 import round from 'lodash/round';
 import { SummaryCardComponent } from '../summary-card/summary-card.component';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-investment-grid',

@@ -12,7 +12,7 @@ import {
   ApexStroke,
   ApexGrid,
 } from 'ng-apexcharts';
-import { debounceTime } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;

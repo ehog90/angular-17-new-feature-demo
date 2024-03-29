@@ -4,10 +4,16 @@ import { InvestmentYear } from './types';
 import { InvestmentGridComponent } from './components/investment-grid/investment-grid.component';
 import { InvestmentChartComponent } from './components/investment-chart/investment-chart.component';
 import { Trading212Service } from './services/trading212.service';
+import { NumericFieldComponent } from './components/numeric-field/numeric-field.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, InvestmentGridComponent, InvestmentChartComponent],
+  imports: [
+    FormsModule,
+    InvestmentGridComponent,
+    InvestmentChartComponent,
+    NumericFieldComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -15,7 +21,7 @@ export class AppComponent {
   readonly trading212Service = inject(Trading212Service);
 
   inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
-  startingMoney = model(
+  initialCapital = model(
     Number(localStorage.getItem('startingMoney') ?? 1_000_000)
   );
   savingsMonthly = model(
@@ -40,7 +46,7 @@ export class AppComponent {
       localStorage.setItem('inflation', this.inflationRate().toString());
     });
     effect(() => {
-      localStorage.setItem('startingMoney', this.startingMoney().toString());
+      localStorage.setItem('startingMoney', this.initialCapital().toString());
     });
     effect(() => {
       localStorage.setItem('savingsMonthly', this.savingsMonthly().toString());
@@ -61,7 +67,7 @@ export class AppComponent {
 
   getFromtrading212() {
     this.trading212Service.getAccountCash().subscribe((data) => {
-      this.startingMoney.set(data.result);
+      this.initialCapital.set(data.result);
     });
   }
 }

@@ -29,30 +29,12 @@
 </div>
 <div class="bg-slate-500 text-slate-50 rounded-lg shadow-lg m-3 p-6">
   <div class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="starting-money" class="text-sm font-light">Initially invested money</label>
-      <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="startingMoney" />
-    </div>
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="starting-money" class="text-sm font-light">Monthly savings, average</label>
-      <input id="starting-money" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="savingsMonthly" />
-    </div>
-
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="inflation" class="text-sm font-light">Inflation rate, average (%)</label>
-      <input id="inflation" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800"
-        [(ngModel)]="inflationRate" />
-    </div>
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="grow" class="text-sm font-light">Expected yearly average grow (%)</label>
-      <input id="grow" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="grow" />
-    </div>
-    <div class="flex flex-col gap-2 lg:gap-3">
-      <label for="years" class="text-sm font-light">Years</label>
-      <input id="years" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="years" />
-    </div>
+    <app-numeric-field id="initial-capital" label="Initial Capital" [(value)]="initialCapital"></app-numeric-field>
+    <app-numeric-field id="monthly-savings" label="Monthly Savings, avg" [(value)]="savingsMonthly"></app-numeric-field>
+    <app-numeric-field id="inflation" label="Inflation rate, avg" unit="%"
+      [(value)]="inflationRate"></app-numeric-field>
+    <app-numeric-field id="return" label="Expected return, avg" unit="%" [(value)]="grow"></app-numeric-field>
+    <app-numeric-field id="years" label="Years" [(value)]="years"></app-numeric-field>
   </div>
 </div>
 <div class="bg-sky-300 text-sky-900 rounded-lg shadow-lg m-3 p-6">
@@ -68,7 +50,7 @@
 
 @defer (on timer(3s); prefetch on idle){
 <app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
-  [inflationRate]="inflationRate()" [startingMoney]="startingMoney()" [startingYear]="startingYear()"
+  [inflationRate]="inflationRate()" [initialCapital]="initialCapital()" [startingYear]="startingYear()"
   (dataChanged)="onDataChanged($event)"></app-investment-grid>
 } @error {
 <div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">

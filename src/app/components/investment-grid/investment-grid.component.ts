@@ -22,7 +22,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class InvestmentGridComponent {
   inflationRate = model.required<number>();
-  startingMoney = model.required<number>();
+  initialCapital = model.required<number>();
   savingsMonthly = model.required<number>();
   grow = model.required<number>();
   years = model.required<number>();
@@ -66,7 +66,7 @@ export class InvestmentGridComponent {
 
     return years.reduce((acc, curr, index) => {
       const startingMoney = round(
-        acc.length === 0 ? this.startingMoney() : acc[index - 1].yearEndMoney,
+        acc.length === 0 ? this.initialCapital() : acc[index - 1].yearEndMoney,
         this.roundDigits
       );
       const totalInflation = round(
@@ -90,7 +90,7 @@ export class InvestmentGridComponent {
       );
       const totalInvested = round(
         acc.length === 0
-          ? this.startingMoney() + savingsMonthly * 12
+          ? this.initialCapital() + savingsMonthly * 12
           : acc[index - 1].totalInvested + savingsMonthly * 12,
         this.roundDigits
       );

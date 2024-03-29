@@ -65,11 +65,26 @@
     </div>
   </div>
 </div>
+
+@defer (on timer(3s); prefetch on idle){
 <app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
   [inflationRate]="inflationRate()" [startingMoney]="startingMoney()" [startingYear]="startingYear()"
   (dataChanged)="onDataChanged($event)"></app-investment-grid>
+} @error {
+<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
+  Failed to laod the lazy loaded module
+</div>
+} @placeholder {
+<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
+  Placeholder for lazy loaded module
+</div>
+} @loading {
+<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
+  Loading
+</div>
+}
 @if (data() !== null) {
-@defer (on timer(3s)){
+@defer (on viewport){
 <app-investment-chart [data]="data()"></app-investment-chart>
 } @error {
 <div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">

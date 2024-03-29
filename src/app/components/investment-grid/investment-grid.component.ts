@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  EventEmitter,
-  Output,
   computed,
   effect,
   model,

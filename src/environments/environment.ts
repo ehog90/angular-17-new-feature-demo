@@ -1,3 +1,3 @@
 export const environment = {
-  t212ApiKey: ':Da',
+  t212ApiKey: ':D',
 };

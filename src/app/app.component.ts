@@ -21,7 +21,7 @@ import { Trading212inputComponent } from './components/trading212input/trading21
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-
+  
   inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
   initialCapital = model(
     Number(localStorage.getItem('startingMoney') ?? 1_000_000)

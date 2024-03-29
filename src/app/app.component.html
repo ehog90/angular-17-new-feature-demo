@@ -8,7 +8,6 @@
 ></app-input>
 <app-trading212input [(initialCapital)]="initialCapital"></app-trading212input>
 
-@defer (on timer(3s); prefetch on idle){
 <app-investment-grid
   [savingsMonthly]="savingsMonthly()"
   [grow]="grow()"
@@ -16,38 +15,13 @@
   [inflationRate]="inflationRate()"
   [initialCapital]="initialCapital()"
   [startingYear]="startingYear()"
-  (dataChanged)="onDataChanged($event)"
   (yearsChanged)="onYearsChanged($event)"
+  (dataChanged)="onDataChanged($event)"
 ></app-investment-grid>
-} @error {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Failed to laod the lazy loaded module
-</div>
-} @placeholder {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Placeholder for lazy loaded module
-</div>
-} @loading {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Loading
-</div>
-} @if (data() !== null) { @defer (on viewport){
+@if (data() !== null) {
 <app-investment-chart [data]="data()"></app-investment-chart>
-} @error {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Failed to laod the lazy loaded module
-</div>
-} @placeholder {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Placeholder for lazy loaded module
-</div>
-} @loading {
-<div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
-  Loading
-</div>
-} } @else {
+} @else {
 <div class="bg-red-500 text-red-50 rounded-lg shadow-lg m-3 p-6">
   There is nothing to draw.
 </div>
-
 }

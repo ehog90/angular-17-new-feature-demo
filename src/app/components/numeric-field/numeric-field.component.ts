@@ -6,12 +6,11 @@ import {
   model,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InputMaskModule } from 'primeng/inputmask';
 
 @Component({
   selector: 'app-numeric-field',
   standalone: true,
-  imports: [FormsModule, InputMaskModule],
+  imports: [FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './numeric-field.component.html',
   styleUrl: './numeric-field.component.scss',

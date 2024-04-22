@@ -1,4 +1,4 @@
-import { Component, ViewChild, computed, input } from '@angular/core';
+import { Component, ViewChild, computed, input, viewChild } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { InvestmentYear } from '../../types';
 import { ApexYAxis, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
@@ -33,7 +33,7 @@ export type ChartOptions = {
 })
 export class InvestmentChartComponent {
   data = input<InvestmentYear[] | null>(null);
-  @ViewChild('chart') chart!: ChartComponent;
+  chart = viewChild(ChartComponent);
 
   data$ = toObservable(this.data);
   dataDebounced = toSignal(this.data$.pipe(debounceTime(500)));

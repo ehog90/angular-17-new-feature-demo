@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { InvestmentYear } from './types';
 import { InvestmentGridComponent } from './components/investment-grid/investment-grid.component';
 import { InvestmentChartComponent } from './components/investment-chart/investment-chart.component';
-import { Trading212Service } from './services/trading212.service';
-import { NumericFieldComponent } from './components/numeric-field/numeric-field.component';
+import { HeaderComponent } from './components/header/header.component';
+import { InputComponent } from './components/input/input.component';
+import { Trading212inputComponent } from './components/trading212input/trading212input.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,13 +13,14 @@ import { NumericFieldComponent } from './components/numeric-field/numeric-field.
     FormsModule,
     InvestmentGridComponent,
     InvestmentChartComponent,
-    NumericFieldComponent,
+    HeaderComponent,
+    InputComponent,
+    Trading212inputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  readonly trading212Service = inject(Trading212Service);
 
   inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
   initialCapital = model(
@@ -67,11 +69,5 @@ export class AppComponent {
 
   onYearsChanged(years: number) {
     this.years.set(years);
-  }
-
-  getFromtrading212() {
-    this.trading212Service.getAccountCash().subscribe((data) => {
-      this.initialCapital.set(data.result);
-    });
   }
 }

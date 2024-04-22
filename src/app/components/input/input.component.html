@@ -1,0 +1,33 @@
+<div class="bg-slate-500 text-slate-50 rounded-lg shadow-lg m-3 p-6">
+  <div
+    class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4"
+  >
+    <app-numeric-field
+      id="initial-capital"
+      label="Initial Capital"
+      [(value)]="initialCapital"
+    ></app-numeric-field>
+    <app-numeric-field
+      id="monthly-savings"
+      label="Monthly Savings, avg"
+      [(value)]="savingsMonthly"
+    ></app-numeric-field>
+    <app-numeric-field
+      id="inflation"
+      label="Inflation rate, avg"
+      unit="%"
+      [(value)]="inflationRate"
+    ></app-numeric-field>
+    <app-numeric-field
+      id="return"
+      label="Expected return, avg"
+      unit="%"
+      [(value)]="grow"
+    ></app-numeric-field>
+    <app-numeric-field
+      id="years"
+      label="Years"
+      [(value)]="years"
+    ></app-numeric-field>
+  </div>
+</div>

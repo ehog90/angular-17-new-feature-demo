@@ -1,24 +1,12 @@
 <app-header></app-header>
-<app-input
-  [(savingsMonthly)]="savingsMonthly"
-  [(grow)]="grow"
-  [(years)]="years"
-  [(inflationRate)]="inflationRate"
-  [(initialCapital)]="initialCapital"
-></app-input>
-<app-trading212input [(initialCapital)]="initialCapital"></app-trading212input>
+<app-input [(savingsMonthly)]="savingsMonthly" [(grow)]="grow" [(savingsGrow)]="savingsGrow" [(years)]="years"
+  [(inflationRate)]="inflationRate" [(initialCapital)]="initialCapital"></app-input>
 
 @defer (on timer(3s); prefetch on idle){
-<app-investment-grid
-  [savingsMonthly]="savingsMonthly()"
-  [grow]="grow()"
-  [(years)]="years"
-  [inflationRate]="inflationRate()"
-  [initialCapital]="initialCapital()"
-  [startingYear]="startingYear()"
-  (dataChanged)="onDataChanged($event)"
-  (yearsChanged)="onYearsChanged($event)"
-></app-investment-grid>
+<app-investment-grid [savingsMonthly]="savingsMonthly()" [grow]="grow()" [(years)]="years"
+  [inflationRate]="inflationRate()" [initialCapital]="initialCapital()" [savingsGrow]="savingsGrow()"
+  [startingYear]="startingYear()" (dataChanged)="onDataChanged($event)"
+  (yearsChanged)="onYearsChanged($event)"></app-investment-grid>
 } @error {
 <div class="bg-purple-900 text-purple-50 rounded-lg shadow-lg m-3 p-6">
   Failed to laod the lazy loaded module

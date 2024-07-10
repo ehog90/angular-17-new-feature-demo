@@ -12,6 +12,7 @@ export class InputComponent {
   inflationRate = model.required<number>();
   initialCapital = model.required<number>();
   savingsMonthly = model.required<number>();
+  savingsGrow = model.required<number>();
   grow = model.required<number>();
   years = model.required<number>();
 }

@@ -24,6 +24,7 @@ export class InvestmentGridComponent {
   inflationRate = model.required<number>();
   initialCapital = model.required<number>();
   savingsMonthly = model.required<number>();
+  savingsGrow = model.required<number>();
   grow = model.required<number>();
   years = model.required<number>();
   startingYear = model.required<number>();
@@ -53,6 +54,7 @@ export class InvestmentGridComponent {
   dataChanged = output<InvestmentYear[]>();
 
   inflationPercent = computed(() => this.inflationRate() / 100 + 1);
+  savingsGrowPercent = computed(() => this.savingsGrow() / 100 + 1);
   growPercent = computed(() => 1 + this.grow() / 100);
   monthlyGrowPercent = computed(() => this.grow() / 12 / 100);
 
@@ -87,7 +89,7 @@ export class InvestmentGridComponent {
       const savingsMonthly = round(
         acc.length === 0
           ? this.savingsMonthly()
-          : acc[index - 1].savingsMonthly * this.inflationPercent(),
+          : acc[index - 1].savingsMonthly * this.savingsGrowPercent(),
         this.roundDigits
       );
       const totalInvested = round(

@@ -5,7 +5,6 @@ import { InvestmentGridComponent } from './components/investment-grid/investment
 import { InvestmentChartComponent } from './components/investment-chart/investment-chart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/input/input.component';
-import { Trading212inputComponent } from './components/trading212input/trading212input.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,14 +14,13 @@ import { Trading212inputComponent } from './components/trading212input/trading21
     InvestmentChartComponent,
     HeaderComponent,
     InputComponent,
-    Trading212inputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-
   inflationRate = model(Number(localStorage.getItem('inflation') ?? 5));
+  savingsGrow = model(Number(localStorage.getItem('savingsGrow') ?? 5));
   initialCapital = model(
     Number(localStorage.getItem('startingMoney') ?? 1_000_000)
   );
@@ -52,6 +50,9 @@ export class AppComponent {
     });
     effect(() => {
       localStorage.setItem('savingsMonthly', this.savingsMonthly().toString());
+    });
+    effect(() => {
+      localStorage.setItem('savingsGrow', this.savingsGrow().toString());
     });
     effect(() => {
       localStorage.setItem('grow', this.grow().toString());

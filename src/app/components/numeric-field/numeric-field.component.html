@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-2 lg:gap-3">
-    <div><label [for]="id" class="text-sm font-light">{{label()}}</label>
+    <div><label [for]="id()" class="text-sm font-light">{{label()}}</label>
         @if (unit()) {<span class="rounded-xl bg-slate-800 text-slate-300 size-96 ms-1 p-1 text-xs">{{unit()}}</span>}
     </div>
-    <input [id]="id" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="value" />
+    <input [id]="id()" type="number" class="rounded-md p-2 bg-slate-300 text-slate-800" [(ngModel)]="value" />
 </div>
